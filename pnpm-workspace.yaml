@@ -1,3 +1,12 @@
 packages:
   - "apps/*"
   - "packages/*"
+allowBuilds:
+  "@prisma/engines": true
+  esbuild: true
+  prisma: true
+catalog:
+  typescript: 7.0.2
+  "@types/node": 26.6.3
+  "eslint": "10.9.1"
+  "dotenv": "^18.0.4"
