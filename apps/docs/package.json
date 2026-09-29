@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --clearScreen false",
-    "build": "tsc && vite build",
+    "build": "tsc \u0026\u0026 vite build",
     "preview": "vite preview",
     "lint": "eslint src"
   },
@@ -15,8 +15,8 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "eslint": "10.9.1",
-    "typescript": "7.0.2",
+    "eslint": "catalog:",
+    "typescript": "catalog:",
     "vite": "8.2.2"
   }
 }

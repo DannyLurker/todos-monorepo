@@ -1,12 +1,7 @@
 {
-  "name": "@repo/schema",
+  "name": "@repo/database",
   "version": "0.0.0",
   "type": "module",
-  "dependencies": {
-    "zod": "^4.6.5"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -18,11 +13,12 @@
     "build": "tsc",
     "dev": "tsc --watch --preserveWatchOutput"
   },
-  "private": true,
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
+    "tsx": "^4.23.15",
     "typescript": "catalog:"
   }
 }
