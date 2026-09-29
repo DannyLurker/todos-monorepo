@@ -5,7 +5,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prisma:migrate-dev": "pnpm --filter @repo/database exec prisma migrate dev",
+    "prisma:generate": "pnpm --filter @repo/database exec prisma generate"
   },
   "devDependencies": {
     "eslint": "catalog:",

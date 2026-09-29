@@ -1,5 +1,5 @@
 {
-  "name": "@repo/database",
+  "name": "@repo/auth",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -20,5 +20,10 @@
     "eslint": "catalog:",
     "tsx": "^4.23.15",
     "typescript": "catalog:"
+  },
+  "dependencies": {
+    "better-auth": "^1.7.6",
+    "@repo/database": "workspace:*",
+    "dotenv": "catalog:"
   }
 }

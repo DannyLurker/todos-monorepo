@@ -16,6 +16,12 @@ import {
   emailCredentialsSchema,
   type EmailCredentialsSchema as EmailCredentailsDto,
 } from '@repo/schema';
+import {
+  Session,
+  type UserSession,
+  AllowAnonymous,
+  OptionalAuth,
+} from '@thallesp/nestjs-better-auth';
 
 @Controller('users')
 export class UsersController {
@@ -25,6 +31,23 @@ export class UsersController {
   @UsePipes(new ZodValidationPipe(emailCredentialsSchema))
   create(@Body() createUserDto: EmailCredentailsDto) {
     return this.usersService.create(createUserDto);
+  }
+
+  @Get('me')
+  async getProfile(@Session() session: UserSession) {
+    return { user: session.user };
+  }
+
+  @Get('public')
+  @AllowAnonymous() // Allow anonymous access
+  async getPublic() {
+    return { message: 'Public route' };
+  }
+
+  @Get('optional')
+  @OptionalAuth() // Authentication is optional
+  async getOptional(@Session() session: UserSession) {
+    return { authenticated: !!session };
   }
 
   @Get()
