@@ -1,3 +1,3 @@
-export { PrismaClient } from "./generated/prisma/client.js";
+export * from "./generated-prisma-client/client.js";
 
-export { prisma } from "./src/prisma.js";
+export { prisma } from "./lib/prisma.js";

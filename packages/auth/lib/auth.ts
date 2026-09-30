@@ -1,5 +1,8 @@
 import { config } from "dotenv";
-config();
+import path from "node:path";
+config({
+  path: path.resolve(process.cwd(), "../database/.env"),
+});
 
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
