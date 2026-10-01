@@ -7,8 +7,7 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prisma:migrate-dev": "pnpm --filter @repo/database exec prisma migrate dev",
-    "prisma:generate": "pnpm --filter @repo/database exec prisma generate",
-    "prisma:seed": "pnpm --filter @repo/database exec prisma db seed"
+    "prisma:generate": "pnpm --filter @repo/database exec prisma generate"
   },
   "devDependencies": {
     "eslint": "catalog:",

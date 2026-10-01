@@ -15,6 +15,9 @@ catalogs:
     eslint:
       specifier: 10.9.1
       version: 10.9.1
+    tsx:
+      specifier: ^4.23.15
+      version: 4.23.15
     typescript:
       specifier: 7.0.2
       version: 7.0.2
@@ -105,6 +108,9 @@ importers:
       supertest:
         specifier: ^7.0.0
         version: 7.3.0(supports-color@7.2.0)
+      tsx:
+        specifier: 'catalog:'
+        version: 4.23.15
       typescript:
         specifier: ^6.0.0
         version: 6.0.3
@@ -222,9 +228,6 @@ importers:
       '@prisma/client':
         specifier: ^7.10.0
         version: 7.10.0(prisma@7.10.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(magicast@0.5.5)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(typescript@7.0.2))(typescript@7.0.2)
-      '@repo/auth':
-        specifier: workspace:*
-        version: link:../auth
       dotenv:
         specifier: 'catalog:'
         version: 18.0.4
@@ -251,7 +254,7 @@ importers:
         specifier: ^7.10.0
         version: 7.10.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(magicast@0.5.5)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(typescript@7.0.2)
       tsx:
-        specifier: ^4.23.15
+        specifier: 'catalog:'
         version: 4.23.15
       typescript:
         specifier: 'catalog:'
@@ -277,6 +280,9 @@ importers:
 
   packages/schema:
     dependencies:
+      '@repo/database':
+        specifier: workspace:*
+        version: link:../database
       zod:
         specifier: ^4.6.5
         version: 4.6.5

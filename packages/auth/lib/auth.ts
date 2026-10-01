@@ -1,8 +1,5 @@
 import { config } from "dotenv";
-import path from "node:path";
-config({
-  path: path.resolve(process.cwd(), "../database/.env"),
-});
+config();
 
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
@@ -12,6 +9,9 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql", // or "mysql", "sqlite", ...etc
   }),
+  emailAndPassword: {
+    enabled: true,
+  },
   user: {
     additionalFields: {
       role: {
