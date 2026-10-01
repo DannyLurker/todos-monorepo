@@ -11,10 +11,11 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { TodosService } from './todos.service.js';
-import { UpdateTodoDto } from './dto/update-todo.dto.js';
 import { ZodValidationPipe } from '../common/pipes/zod-validation.pipes.js';
 import {
   todoCreateSchema,
+  todoUpdateSchema,
+  type TodoUpdateSchema as UpdateTodoDto,
   type TodoCreateSchema as CreateTodoDto,
 } from '@repo/schema';
 import { prisma } from '@repo/database';
@@ -31,22 +32,27 @@ export class TodosController {
   }
 
   @Get()
+  @HttpCode(HttpStatus.OK)
   findAll() {
-    return this.todosService.findAll();
+    return this.todosService.findAll(prisma);
   }
 
   @Get(':id')
+  @HttpCode(HttpStatus.OK)
   findOne(@Param('id') id: string) {
-    return this.todosService.findOne(+id);
+    return this.todosService.findOne(id, prisma);
   }
 
   @Patch(':id')
+  @HttpCode(HttpStatus.OK)
+  @UsePipes(new ZodValidationPipe(todoUpdateSchema))
   update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todosService.update(+id, updateTodoDto);
+    return this.todosService.update(id, updateTodoDto, prisma);
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.OK)
   remove(@Param('id') id: string) {
-    return this.todosService.remove(+id);
+    return this.todosService.remove(id, prisma);
   }
 }
