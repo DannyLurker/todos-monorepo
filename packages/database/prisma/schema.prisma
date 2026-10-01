@@ -12,6 +12,13 @@ enum Role {
   PROGRAMMER
 }
 
+enum TodoStatus {
+  PUBLISH
+  PREVIEW
+  DONE
+}
+
+// Authentication
 model User {
   id            String    @id
   name          String
@@ -23,6 +30,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  todos         Todo[]    @relation("assignedWorker")
 
   @@unique([email])
   @@map("user")
@@ -74,4 +82,28 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+// Todos
+model Todo {
+  id             String       @id @default(cuid())
+  title          String
+  point          Int
+  status         TodoStatus
+  assignedWorker String
+  user           User         @relation("assignedWorker", references: [id], fields: [assignedWorker])
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  detailTodos    DetailTodo[]
+
+  @@map("todo")
+}
+
+model DetailTodo {
+  id     String @id @default(cuid())
+  title  String
+  todoId String
+  todo   Todo   @relation(references: [id], fields: [todoId])
+
+  @@map("detailTodo")
 }
