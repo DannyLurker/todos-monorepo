@@ -24,7 +24,9 @@ export class TodosService {
             },
           },
           detailTodos: {
-            create: createTodoDto.detailTodos,
+            createMany: {
+              data: createTodoDto.detailTodos,
+            },
           },
         },
         tx,
@@ -67,17 +69,28 @@ export class TodosService {
     const todo = await this.todosRepository.update(
       id,
       {
-        point: updateTodoDto.point,
-        title: updateTodoDto.title,
-        status: updateTodoDto.status,
-        user: {
-          connect: {
-            id: updateTodoDto.assignedWorker,
+        ...(updateTodoDto.title !== undefined && {
+          title: updateTodoDto.title,
+        }),
+        ...(updateTodoDto.point !== undefined && {
+          point: updateTodoDto.point,
+        }),
+        ...(updateTodoDto.status !== undefined && {
+          status: updateTodoDto.status,
+        }),
+        ...(updateTodoDto.assignedWorker && {
+          user: {
+            connect: { id: updateTodoDto.assignedWorker },
           },
-        },
-        detailTodos: {
-          create: updateTodoDto.detailTodos,
-        },
+        }),
+        ...(updateTodoDto.detailTodos && updateTodoDto.detailTodos.length > 0
+          ? {
+              detailTodos: {
+                deleteMany: {},
+                create: updateTodoDto.detailTodos,
+              },
+            }
+          : {}),
       },
       prisma,
     );

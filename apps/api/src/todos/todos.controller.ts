@@ -43,10 +43,12 @@ export class TodosController {
     return this.todosService.findOne(id, prisma);
   }
 
-  @Patch(':id')
   @HttpCode(HttpStatus.OK)
-  @UsePipes(new ZodValidationPipe(todoUpdateSchema))
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+  @Patch(':id')
+  update(
+    @Param('id') id: string,
+    @Body(new ZodValidationPipe(todoUpdateSchema)) updateTodoDto: UpdateTodoDto,
+  ) {
     return this.todosService.update(id, updateTodoDto, prisma);
   }
 

@@ -103,7 +103,7 @@ model DetailTodo {
   id     String @id @default(cuid())
   title  String
   todoId String
-  todo   Todo   @relation(references: [id], fields: [todoId])
+  todo   Todo   @relation(references: [id], fields: [todoId], onDelete: Cascade)
 
   @@map("detailTodo")
 }
