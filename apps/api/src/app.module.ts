@@ -7,7 +7,7 @@ import { TodosModule } from './todos/todos.module.js';
 @Module({
   imports: [
     UsersModule,
-    AuthModule.forRoot({ auth, disableGlobalAuthGuard: true }),
+    AuthModule.forRoot({ auth, disableGlobalAuthGuard: false }),
     TodosModule,
   ],
   controllers: [],

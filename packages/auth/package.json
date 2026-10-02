@@ -7,6 +7,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/lib/auth-client.d.ts",
+      "import": "./dist/lib/auth-client.js",
+      "default": "./dist/lib/auth-client.js"
     }
   },
   "scripts": {

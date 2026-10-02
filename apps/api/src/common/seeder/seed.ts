@@ -1,5 +1,5 @@
 import { auth } from '@repo/auth';
-import { Role } from '@repo/database';
+import { type Role } from '@repo/database/client';
 
 async function main() {
   console.log('Seeding');

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Prisma, PrismaClient } from '@repo/database';
+import { Prisma, PrismaClient } from '@repo/database/client';
 
 @Injectable()
 export class TodosRepository {

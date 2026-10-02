@@ -90,6 +90,7 @@ model Todo {
   title          String
   point          Int
   status         TodoStatus
+  comment        String?
   assignedWorker String
   user           User         @relation("assignedWorker", references: [id], fields: [assignedWorker])
   createdAt      DateTime     @default(now())
